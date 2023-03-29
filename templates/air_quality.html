@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Air Quality Checkup</title>
+    <style>
+    	h1 {
+			text-align: center;
+		}
+	</style>
+
+</head>
+<body>
+	<h1>Air Quality Checkup</h1>
+	<form method="post">
+        <div class="data-container">
+		<label for="area">Select an area:</label>
+		<select id="area" name="area" onchange="this.form.submit()">
+			{% for area in areas %}
+			<option value="{{ area }}" {% if area == selected_area %}selected{% endif %}>{{ area }}</option>
+			{% endfor %}
+        </select> </br>
+        </div>
+	</form>
+	<br>
+    <div class="table-container"></br>
+	<table>
+		<thead>
+			<tr>
+				<th>crop-name</th>
+				<th>crop-type</th>
+				<th>crop-details</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in data %}
+			<tr>
+				<td>{{ row[0] }}</td>
+				<td>{{ row[1] }}</td>
+				<td>{{ row[2] }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    </div>
+</body>
+</html>
